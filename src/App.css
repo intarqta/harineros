@@ -36,3 +36,75 @@
     transform: rotate(360deg);
   }
 }
+
+/* Estilos generales para el popup */
+.popup-content {
+  padding: 10px;
+  max-width: 80vw; /* Que el popup no ocupe más del 80% del ancho de la pantalla */
+  text-align: center;
+}
+
+/* El título del popup */
+.popup-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* El cuerpo del popup, con la imagen */
+.popup-body {
+  margin-bottom: 15px;
+  max-width: 100%; /* Asegurarse de que no sobrepase el tamaño del popup */
+}
+
+/* Imagen en el popup */
+.popup-body img {
+  width: 80px;
+  height: auto;
+}
+
+/* El pie del popup con el botón */
+.popup-footer {
+  display: flex;
+  justify-content: center;
+}
+
+/* Botón en el footer */
+.popup-footer button {
+  padding: 8px 12px;
+}
+
+/* Responsividad: Para pantallas muy pequeñas */
+@media (max-width: 576px) {
+  .popup-content {
+    max-width: 90vw; /* Que el popup ocupe hasta el 90% del ancho de la pantalla en móviles */
+  }
+
+  .popup-title {
+    font-size: 16px;
+  }
+
+  .popup-body p {
+    font-size: 14px;
+  }
+
+  .popup-footer button {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+/* Logo institucional en la esquina inferior derecha */
+.institutional-logo {
+  position: absolute;
+  bottom: 10px;
+  left: 10px; /* Cambiado para que esté en la derecha */
+  width: 60px; /* Ajusta el tamaño del logo */
+  height: auto;
+  z-index: 1000; /* Asegura que el logo esté encima del mapa */
+  opacity: 0.8; /* Opción para hacer el logo un poco transparente */
+}
+
+.institutional-logo:hover {
+  opacity: 1; /* El logo será más visible cuando se pase el mouse */
+}
