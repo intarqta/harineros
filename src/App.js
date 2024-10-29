@@ -7,14 +7,15 @@ import L from 'leaflet';
 import placesData from './assets/places.json';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import './App.css'
 import institutionalLogo from './assets/IMG/logo_inta.png'; // Importar el logo institucional
 
 // Importamos los SVG
 import logo1 from './assets/IMG/4_reinos_transp.svg';
-import logo2 from './assets/IMG/Coliqueo.png';
-import logo3 from './assets/IMG/Don Paisa.png';
+import logo2 from './assets/IMG/Coliqueo.svg';
+import logo3 from './assets/IMG/Don Paisa.svg';
 import logo4 from './assets/IMG/la clarita.svg';
 import logo5 from './assets/IMG/LA CONSTANCIA.svg';
 import logo6 from './assets/IMG/Fincas el paraiso.svg';
@@ -95,6 +96,7 @@ const App = () => {
           });; // icono predeterminado
 
           let logoPopup = logo1;
+          let numberPhone = "nn";
 
       if (place.properties.NombreH === 'La Clarita') {
         customIcon = L.icon({
@@ -104,6 +106,8 @@ const App = () => {
           popupAnchor: [0, -50],
         });
         logoPopup = logo4;
+        numberPhone = place.properties.DatosContacto
+
        
        }
        else if (place.properties.NombreH === 'Vuelta al campo') {
@@ -205,12 +209,12 @@ const App = () => {
         logoPopup = logo16;
        }else if (place.properties.NombreH === 'Maray') {
         customIcon = L.icon({
-          iconUrl: logo6,
+          iconUrl: logo20,
           iconSize: [50, 50],
           iconAnchor: [25, 50],
           popupAnchor: [0, -50],
         });
-        logoPopup = logo6;
+        logoPopup = logo20;
        
        }else if (place.properties.NombreH === 'Taku') {
         customIcon = L.icon({
@@ -227,7 +231,7 @@ const App = () => {
           iconAnchor: [25, 50],
           popupAnchor: [0, -50],
         });
-       
+        logoPopup = logo24;
        }else if (place.properties.NombreH === 'Semillas del Sol') {
         customIcon = L.icon({
           iconUrl: logo30,
@@ -296,12 +300,12 @@ const App = () => {
         logoPopup = logo29;
        }else if (place.properties.NombreH === 'Hersilia de Otro costal') {
         customIcon = L.icon({
-          iconUrl: logo28,
+          iconUrl: logo17,
           iconSize: [50, 50],
           iconAnchor: [25, 50],
           popupAnchor: [0, -50],
         });
-        logoPopup = logo28;
+        logoPopup = logo17;
        }else if (place.properties.NombreH === '4 Reinos') {
         customIcon = L.icon({
           iconUrl: logo1,
@@ -350,7 +354,7 @@ const App = () => {
           popupAnchor: [0, -50],
         });
         logoPopup = logo15;
-       }else if (place.properties.NombreH === 'Masabi') {
+       }else if (place.properties.NombreH === 'Masabia') {
         customIcon = L.icon({
           iconUrl: logo8,
           iconSize: [50, 50],
@@ -375,14 +379,39 @@ const App = () => {
               <Popup>
               <div className="popup-content">
                   <ModalTitle>{place.properties.NombreE}</ModalTitle>
+                  <hr />
+                  <ModalTitle style={{fontSize:'13px', textAlign:'left'}}><strong>Localidad:</strong> {place.properties.Localidad}</ModalTitle>
+                  
                   <div className="popup-body">
-                  <div className="popup-body">
-                    <p><strong>Persona de Contacto:</strong> {place.properties.Contacto}</p>
-                    <p><strong>Contacto:</strong> {place.properties.DatosContacto}</p>
+                  {place.properties.Contacto && (
+                    <p style={{fontSize:'13px', textAlign:'left'}}><strong>Contacto:</strong> {place.properties.Contacto}</p>)}
+                    <div className="redes-sociales">
+                    {place.properties.DatosContacto && (
+                      <div style={{display:'flex', alignItems:'center', width:'100%'}}><a href={place.properties.DatosContacto} className="icono-red-social telefono fs-4">
+                      <i style={{verticalAlign:"center"}} className="bi bi-telephone"></i>
+                    </a> <p style={{marginLeft:'10px'}}>{place.properties.DatosContacto}</p></div>
+                    )}
+                    {place.properties.email && (
+                      <div style={{display:'flex', alignItems:'center', width:'100%'}}><a href={place.properties.email} className="icono-red-social email fs-4">
+                      <i style={{verticalAlign:"center"}} className="bi bi-envelope"></i>
+                    </a> <p style={{marginLeft:'10px'}}>{place.properties.email}</p></div>
+                      
+                    )}
+                    {place.properties.instagram && (
+                      <div style={{display:'flex', alignItems:'center', width:'100%'}}><a href={place.properties.instagram} className="icono-red-social instagram fs-4">
+                      <i style={{verticalAlign:"center"}} className="bi bi-instagram"></i>
+                    </a> <p style={{marginLeft:'10px'}}>{place.properties.instagram}</p></div>
+                      
+                    )}
+                    {place.properties.facebook && (
+                      <div style={{display:'flex', alignItems:'center', width:'100%'}}><a href={place.properties.facebook} className="icono-red-social facebook fs-4">
+                      <i style={{verticalAlign:"center"}} className="bi bi-facebook"></i>
+                    </a> <p style={{marginLeft:'10px'}}>{place.properties.facebook}</p></div>
+                      
+                    )}
+                    </div>
                   </div>
                   
-                    
-                  </div>
                   <div className="popup-footer">
                   <img src={logoPopup} alt={place.properties.NombreE} style={{ width: '80px' }} />
                   </div>

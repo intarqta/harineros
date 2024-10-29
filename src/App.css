@@ -108,3 +108,12 @@
 .institutional-logo:hover {
   opacity: 1; /* El logo será más visible cuando se pase el mouse */
 }
+
+
+
+
+/* Efecto hover */
+.icono-red-social:hover {
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+  filter: brightness(1.2); /* Aumenta el brillo */
+}
